@@ -1,0 +1,47 @@
+#:kivy 2.2.1
+text: 'Unzip'
+on_release: root.unzip_here()
+Button:
+text: 'Props'
+on_release: root.props()
+
+
+Label:
+size_hint_y: None
+height: dp(22)
+text: root.status
+color: 0.7,0.7,0.7,1
+
+
+<FileRow@BoxLayout>:
+size_hint_y: None
+height: dp(60)
+padding: 10
+spacing: 10
+canvas.before:
+Color:
+rgba: (0.16,0.26,0.36,1) if self.selected else (0.1,0.1,0.1,1)
+RoundedRectangle:
+radius: [12,12,12,12]
+pos: self.pos
+size: self.size
+BoxLayout:
+orientation: 'vertical'
+Label:
+text: root.name
+bold: True
+halign: 'left'
+valign: 'middle'
+text_size: self.size
+Label:
+text: root.meta
+halign: 'left'
+valign: 'middle'
+text_size: self.size
+Label:
+size_hint_x: None
+width: dp(32)
+text: '📁' if root.is_dir else '📄'
+
+
+# =====================
